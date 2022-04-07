@@ -1,0 +1,6 @@
+folder/venv
+folder/.config
+.replit
+poetry.lock
+pyproject.toml
+replit.nix
