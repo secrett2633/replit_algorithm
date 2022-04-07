@@ -1,4 +1,4 @@
-folder/venv
+venv/
 .replit
 poetry.lock
 pyproject.toml
