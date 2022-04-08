@@ -1,5 +1,6 @@
 from collections import deque
 
+
 # BFS 함수 정의
 def bfs(graph, start, visited):
     # 큐(Queue) 구현을 위해 deque 라이브러리 사용
@@ -17,18 +18,20 @@ def bfs(graph, start, visited):
                 queue.append(i)
                 visited[i] = True
 
+
 # 각 노드가 연결된 정보를 리스트 자료형으로 표현(2차원 리스트)
 
 n, m, v = map(int, input().split())
 graph = [[] for i in range(n + 1)]
 for i in range(m):
-  a, b = map(int, input().split())
-  graph[a].append(b)
-  graph[b].append(a)
+    a, b = map(int, input().split())
+    graph[a].append(b)
+    graph[b].append(a)
 for i in range(len(graph)):
-  graph[i].sort()
+    graph[i].sort()
 # 각 노드가 방문된 정보를 리스트 자료형으로 표현(1차원 리스트)
-  
+
+
 def dfs(graph, v, visited):
     # 현재 노드를 방문 처리
     visited[v] = True
@@ -37,6 +40,7 @@ def dfs(graph, v, visited):
     for i in graph[v]:
         if not visited[i]:
             dfs(graph, i, visited)
+
 
 # 각 노드가 방문된 정보를 리스트 자료형으로 표현(1차원 리스트)
 visited = [False] * (n + 1)
