@@ -1,13 +1,11 @@
 import sys
 input = sys.stdin.readline
-t = int(input())
-for i in range(t):
-  a = int(input())
-  if a >= 1900:
-    print("Division 1")
-  elif a >=1600:
-    print("Division 2")
-  elif a >=1400:
-    print("Division 3")
+for _ in range(int(input())):
+  x, y = map(int, input().split())
+  if y % x > 0 or x > y:
+    print("0 0")
   else:
-    print("Division 4")
+    a = 1
+    b = y // x
+    print(str(a) + " " + str(b))
+    

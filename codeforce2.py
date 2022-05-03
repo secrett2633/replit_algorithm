@@ -1,20 +1,11 @@
 import sys
-from collections import Counter
+import string
+import itertools
 input = sys.stdin.readline
-t = int(input())
-for i in range(t):
-  n = int(input())
-  arr = Counter(list(map(int, input().split())))
-  arr_set = list(set(arr))
-  cnt = True
-  for i in arr_set:
-    if arr[i] >= 3:
-      print(i)
-      cnt = False
-      break
-  if cnt:
-    print("-1")
-    
-    
-  
+alpha = list(string.ascii_lowercase)
+it = list(itertools.permutations(alpha, 2))
+for _ in range(int(input())):
+  s = list(input().rstrip())
+  result = it.index((s[0], s[1]))
+  print(result + 1)
   
