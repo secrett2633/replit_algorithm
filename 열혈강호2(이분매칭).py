@@ -10,21 +10,11 @@ def dfs(x):
             return True
     return False    
 
-n, m, k = map(int, input().split())
+n, m = map(int, input().split())
 check = [[]] + [list(map(int, input().split()))[1:] for _ in range(n)]
 eat = [0] * (m + 1)
-cnt = 0
-for j in range(1, n + 1):
-    visited = [0] * (n + 1)
-    if dfs(j):
-      cnt += 1
-      
-for j in range(1, n + 1):
-  while k > 0:
-    visited = [0] * (n + 1)
-    if dfs(j):
-      cnt += 1
-      k -= 1   
-    else:
-      break
-print(cnt) 
+for _ in range(2):
+    for j in range(1, n + 1):
+        visited = [0] * (n + 1)
+        dfs(j)
+print(m - eat[1:].count(0))
