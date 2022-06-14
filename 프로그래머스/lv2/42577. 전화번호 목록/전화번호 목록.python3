@@ -1,0 +1,11 @@
+def solution(phone_book):
+    arr = {}
+    for i in phone_book:
+        arr[i] = 0
+    for p in phone_book:
+        temp = ""
+        for i in p:
+            temp += i
+            if temp in arr and temp != p:
+                return False
+    return True
