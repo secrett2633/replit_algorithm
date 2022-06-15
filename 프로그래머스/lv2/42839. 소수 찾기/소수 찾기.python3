@@ -1,0 +1,16 @@
+def checkPrimeNum(check_number):
+    for i in range(2, int(check_number**0.5)+1): 
+        if int(check_number) % i == 0: 
+            return False
+    return True
+
+def solution(numbers):
+    from itertools import permutations
+    answer = set()
+    numbers = list(str(numbers))
+    for i in range(1, len(numbers) + 1):
+        for j in permutations(numbers, i):
+            s = "".join(j)
+            if checkPrimeNum(int(s)) and not (int(s) < 2):
+                answer.add(int(s))          
+    return len(answer)
