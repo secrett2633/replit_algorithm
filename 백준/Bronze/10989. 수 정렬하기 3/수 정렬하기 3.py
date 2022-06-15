@@ -1,0 +1,9 @@
+import sys
+n = int(sys.stdin.readline())
+arr = [0] * 10001
+for i in range(n):
+  arr[int(sys.stdin.readline())] += 1
+for i in range(len(arr)):
+  if arr[i] != 0:
+    for k in range(arr[i]):
+      print(i)
