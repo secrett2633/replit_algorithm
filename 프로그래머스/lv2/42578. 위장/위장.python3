@@ -1,0 +1,8 @@
+def solution(clothes):
+    answer = 1
+    arr = {}
+    for a, b in clothes:
+        arr[b] = arr.get(b, 0) + 1
+    for i in arr:
+        answer *= (arr[i] + 1)
+    return answer - 1
