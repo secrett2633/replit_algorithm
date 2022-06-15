@@ -1,0 +1,18 @@
+def solution(progresses, speeds):
+    import math
+    answer = []
+    cnt = len(speeds)
+    i = 0
+    day = 0
+    while i < cnt:
+        day += max(0, math.ceil((100 - (progresses[i] + speeds[i] * day)) / speeds[i]))
+        i += 1
+        temp = 1
+        while i < cnt:
+            if progresses[i] + speeds[i] * day >= 100:
+                temp += 1
+                i += 1
+            else:
+                break
+        answer.append(temp) 
+    return answer
