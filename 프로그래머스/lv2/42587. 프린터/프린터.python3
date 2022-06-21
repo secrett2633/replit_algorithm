@@ -1,0 +1,12 @@
+def solution(priorities, location):
+    answer = 0
+    cnt = len(priorities)
+    arr = list(range(cnt))
+    res = sorted(priorities, reverse = True)
+    i = 0    
+    while priorities != res:
+        if priorities[i] < max(priorities[i + 1:]):
+            priorities.append(priorities.pop(i))
+            arr.append(arr.pop(i))
+        else: i += 1
+    return arr.index(location) + 1
