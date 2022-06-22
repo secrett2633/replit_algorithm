@@ -1,0 +1,31 @@
+def solution(str1, str2):
+    answer = 0
+    str1 = str1.lower()
+    str2 = str2.lower()
+    arr3 = {}
+    arr4 = {}
+    arr5 = []
+    cnt = 0
+    cnt1 = 0
+    for i in range(len(str1) - 1):
+        if str1[i:i+2].isalpha(): 
+            if str1[i:i+2] in arr3: arr3[str1[i:i+2]] += 1
+            else: arr3[str1[i:i+2]] = 1
+    #print(arr3)
+    
+    for i in range(len(str2) - 1):
+        if str2[i:i+2].isalpha(): 
+            if str2[i:i+2] in arr3: arr5.append(str2[i:i+2])
+            if str2[i:i+2] in arr4: arr4[str2[i:i+2]] += 1
+            else: arr4[str2[i:i+2]] = 1
+    #print(arr4)
+    x = 0
+    y = 0
+    for key, value in arr3.items():
+        if key in arr5: x += min(arr4[key], value); y += max(arr4[key], value) 
+        else: y += value
+    for key, value in arr4.items():
+        if key not in arr5: y += value
+    #print(x, y)
+    if x == 0 and y == 0: return 65536
+    return int(x / y * 65536)
