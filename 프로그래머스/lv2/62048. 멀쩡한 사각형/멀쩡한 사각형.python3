@@ -1,0 +1,4 @@
+def solution(w,h):
+    answer = 1
+    answer = max(0, int(int(h - (h / w)) * w))
+    return answer
