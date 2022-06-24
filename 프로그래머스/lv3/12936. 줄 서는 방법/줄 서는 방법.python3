@@ -1,0 +1,13 @@
+def solution(n, k):
+    import math
+    answer = []
+    arr = list(range(1, n + 1))
+    while n != 0:
+        s = math.factorial(n) / n
+        now = int((k - 1) / s)
+        answer.append(arr[now])
+        del arr[now]
+        n -= 1
+        k %= s
+        if k == 0: k = s
+    return answer
