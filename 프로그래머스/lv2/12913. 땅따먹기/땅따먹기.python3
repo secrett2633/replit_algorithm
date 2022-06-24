@@ -1,0 +1,11 @@
+def solution(land):
+    answer = 0
+    arr = [0] * 4
+    for i in range(len(land)):
+        tmp = [0] * 4
+        tmp[0] = max(arr[1], arr[2], arr[3]) + land[i][0]
+        tmp[1] = max(arr[0], arr[2], arr[3]) + land[i][1]
+        tmp[2] = max(arr[0], arr[1], arr[3]) + land[i][2]
+        tmp[3] = max(arr[0], arr[1], arr[2]) + land[i][3]
+        arr = tmp[:]
+    return max(arr)
