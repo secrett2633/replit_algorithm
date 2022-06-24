@@ -1,0 +1,24 @@
+def solution(word):
+    answer = 0
+    now = []
+    cnt = 0
+    arr = ["A", "E", "I", "O", "U"]
+    while True:
+        #print("".join(now), answer)
+        if "".join(now) == word: return answer
+        if len(now) < 5:
+            now.append("A")
+            answer += 1
+        elif now[-1] == "A": now[-1] = "E"; answer += 1
+        elif now[-1] == "E": now[-1] = "I"; answer += 1
+        elif now[-1] == "I": now[-1] = "O"; answer += 1
+        elif now[-1] == "O": now[-1] = "U"; answer += 1
+        else:
+            while now[-1] == "U": del now[-1]
+            if now[-1] == "A": now[-1] = "E"
+            elif now[-1] == "E": now[-1] = "I"
+            elif now[-1] == "I": now[-1] = "O"
+            elif now[-1] == "O": now[-1] = "U"
+            answer += 1
+        
+    return answer
