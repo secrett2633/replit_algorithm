@@ -1,0 +1,21 @@
+def solution(answers):
+    answer = []
+    a = 0
+    b = 0
+    c = 0
+    dx = [[1, 2, 3, 4, 5], [2, 1, 2, 3, 2, 4, 2, 5], [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]]
+    for i in range(len(answers)):
+        if answers[i] == dx[0][i % 5]:
+            a += 1
+        if answers[i] == dx[1][i % 8]:
+            b += 1
+        if answers[i] == dx[2][i % 10]:
+            c += 1
+    a, b, c = max(a, b, c) - a, max(a, b, c) - b, max(a, b, c) - c
+    if a == 0:
+        answer.append(1)
+    if b == 0:
+        answer.append(2)
+    if c == 0:
+        answer.append(3)
+    return answer
