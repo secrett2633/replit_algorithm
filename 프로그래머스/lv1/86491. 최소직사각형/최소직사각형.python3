@@ -1,0 +1,8 @@
+def solution(sizes):
+    answer = 0
+    x = 0
+    y = 0
+    for a, b in sizes:
+        x = max(min(a, b), x)
+        y = max(max(a, b), y)
+    return x * y
