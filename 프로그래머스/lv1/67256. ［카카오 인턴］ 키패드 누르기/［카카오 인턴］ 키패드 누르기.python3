@@ -1,0 +1,22 @@
+def solution(numbers, hand):
+    answer = ''
+    left = [1, 4, 7, "*"]
+    right = [3, 6, 9, "#"]
+    mid = [2, 5, 8, 0]
+    nx = "*"
+    ny = "#"
+    x = 0
+    y = 0
+    if hand == "right":
+        for i in numbers:
+            if i in left: answer += "L"; nx = i; x = 0
+            elif i in right: answer += "R"; ny = i; y = 0
+            elif abs(left.index(nx) - mid.index(i)) + x < abs(right.index(ny) - mid.index(i)) + y: answer += "L"; nx = left[mid.index(i)]; x = -1
+            else: answer += "R"; ny = right[mid.index(i)]; y = -1
+    else:
+        for i in numbers:
+            if i in left: answer += "L"; nx = i; x = 0
+            elif i in right: answer += "R"; ny = i; y = 0
+            elif abs(left.index(nx) - mid.index(i)) + x <= abs(right.index(ny) - mid.index(i)) + y: answer += "L"; nx = left[mid.index(i)]; x = -1
+            else: answer += "R"; ny = right[mid.index(i)]; y = -1
+    return answer
