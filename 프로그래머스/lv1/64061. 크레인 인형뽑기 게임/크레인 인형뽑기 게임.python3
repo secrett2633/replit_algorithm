@@ -1,0 +1,15 @@
+def solution(board, moves):
+    answer = []
+    cnt = 0
+    test = []
+    for n in moves:
+        for i in range(len(board)):
+            if board[i][n - 1] != 0: 
+                test.append(board[i][n - 1])
+                if answer: tmp = answer.pop(); 
+                else: tmp = 0
+                if tmp == board[i][n - 1]: cnt += 2; #print(tmp, board[i][n - 1])
+                else: answer += [tmp, board[i][n - 1]]; #print(tmp, board[i][n - 1])
+                board[i][n - 1] = 0
+                break
+    return cnt
