@@ -1,0 +1,17 @@
+def checkPrimeNum(check_number):
+    if check_number < 2: return False
+    for i in range(2, int(check_number**0.5)+1): 
+        if int(check_number) % i == 0: 
+            return False
+    return True
+def solution(n, k):
+    answer = 0
+    res = ""
+    while n > 0:
+        n, d = divmod(n, k)
+        res += str(d)
+    res = res[::-1]
+    for i in res.split("0"):
+        if i == "": continue
+        if checkPrimeNum(int(i)): answer += 1
+    return answer
