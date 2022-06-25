@@ -1,0 +1,12 @@
+import sys
+sys.setrecursionlimit(10 ** 6)
+def fibo(num):
+    if num in visited: return visited[num]
+    a = fibo(num - 1)
+    b = fibo(num - 2)
+    visited[num] = (visited[num - 1] + visited[num - 2]) % 1234567
+def solution(n):
+    global visited
+    visited = {0 : 0, 1 : 1, 2: 1}
+    fibo(n)
+    return visited[n] % 1234567
