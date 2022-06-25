@@ -1,0 +1,12 @@
+def solution(s, n):
+    import string
+    answer = ""
+    a = (list(string.ascii_lowercase))
+    b = (list(string.ascii_uppercase))
+    a.reverse()
+    b.reverse()
+    for i in s:
+        if i in a: answer += a[a.index(i) - n]
+        elif i in b: answer += b[b.index(i) - n]
+        else: answer += i
+    return answer
