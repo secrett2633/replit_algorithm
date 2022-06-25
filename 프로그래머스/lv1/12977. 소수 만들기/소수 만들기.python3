@@ -1,0 +1,11 @@
+def checkPrimeNum(check_number):
+    for i in range(2, int(check_number**0.5)+1): 
+        if int(check_number) % i == 0: 
+            return False
+    return True
+def solution(nums):
+    answer = 0
+    from itertools import combinations
+    for a, b, c in combinations(nums, 3):
+        if checkPrimeNum(a + b + c): answer += 1
+    return answer
