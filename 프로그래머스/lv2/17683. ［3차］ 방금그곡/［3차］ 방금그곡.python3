@@ -1,0 +1,29 @@
+def solution(m, musicinfos):
+    def make_s(s):
+        cache = {"C":"A", "C#":"B", "D":"C", "D#":"D", "E":"E", "F":"F", "F#":"G", "G":"H", "G#":"I", "A":"J", "A#":"K", "B":"L", "E#":"M"}
+        i = 0
+        res = ""
+        while i < len(s):
+            if i + 1 < len(s) and s[i + 1] == "#":
+                res += cache[s[i:i+2]]
+                i += 1
+            else: res += cache[s[i:i+1]]
+            i += 1
+        return res
+    
+    answer = "(None)"
+    cnt = 0
+    m = make_s(m)
+    for i in musicinfos:
+        a, b, c, d = i.split(",")
+        d = make_s(d)        
+        a = a.split(":")
+        a = int(a[0]) * 60 + int(a[1])
+        b = b.split(":")
+        b = int(b[0]) * 60 + int(b[1])
+        t = b - a
+        t1, t2 = divmod(t, len(d))
+        d = t1 * d + d[:t2]
+        if m in d: 
+            if cnt < t: cnt = t; answer = c
+    return answer
