@@ -1,0 +1,25 @@
+def solution(line):
+    answer = set()
+    minx = int(1e15)
+    maxx = -int(1e15)
+    miny = int(1e15)
+    maxy = -int(1e15)   
+    for i in range(len(line)):
+        a, b, c = line[i]
+        for j in range(i + 1, len(line)):
+            
+            d, e, f = line[j]
+            bx = a * e - b * d
+            if bx == 0: continue
+            tx = b * f - c * e
+            ty = c * d - a * f
+            x, y = tx / bx, ty / bx
+            if x - int(x) != 0 or y - int(y) != 0: continue
+            x, y = int(x), int(y)
+            answer.add((y, x))
+            minx, maxx, miny, maxy = min(minx, y), max(maxx, y), min(miny, x), max(maxy, x)
+    
+    result = [["."] * (maxy - miny + 1) for _ in range(maxx - minx + 1)]
+    for x, y in answer:
+        result[maxx - x][y - miny] = "*"
+    return ["".join(i) for i in result]
