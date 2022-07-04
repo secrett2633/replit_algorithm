@@ -1,5 +1,4 @@
 import sys
-#import math
 input = sys.stdin.readline
 n = int(input())
 m = int(input())
@@ -16,10 +15,7 @@ for i in arr:
     for k in range(n):
       if stu[q[k]] == cnt:
         stu[q[k]] = 0
-        del q[k] 
-        cnt = 1001
-        for j in q:
-          cnt = min(cnt, stu[j])
+        del q[k]
         break
   q.append(i)
 print(*sorted(q))
