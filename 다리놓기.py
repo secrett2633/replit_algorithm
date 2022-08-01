@@ -1,6 +1,0 @@
-import sys
-import math
-input = sys.stdin.readline
-for _ in range(int(input())):
-  a, b = map(int, input().split())
-  print(math.factorial(b) // (math.factorial(b - a) * math.factorial(a)))
