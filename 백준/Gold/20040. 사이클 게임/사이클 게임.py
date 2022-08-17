@@ -2,23 +2,15 @@ import sys
 input = sys.stdin.readline
 n, m = map(int, input().split())
 parents = [i for i in range(n + 1)]
-flag = False
 for i in range(m):  
-  a, b = map(int, input().split())
-  if flag: continue
-  x = a
-  y = b
+  x, y = map(int, input().split())
   while x != parents[x]:    
     parents[x] = parents[parents[x]]
     x = parents[x]
   while y != parents[y]:
     parents[y] = parents[parents[y]]
     y = parents[y]
-  if x == y:
-    print(i + 1)
-    flag = True
-  elif x < y:
-    parents[x] = y
-  else:
-    parents[y] = x  
-if not flag: print(0)
+  if x == y: print(i + 1); break
+  elif x < y: parents[x] = y
+  else: parents[y] = x  
+else: print(0)
