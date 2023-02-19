@@ -18,15 +18,12 @@ def solution(n, paths, gates, summits):
     while q:
         now, cnt = q.popleft()
         if summit[now]: 
-            if answer[1] > cnt: 
-                answer = [now, cnt]
-            elif answer[1] == cnt: 
-                answer[0] = min(answer[0], now)
+            if answer[1] > cnt: answer = [now, cnt]
+            elif answer[1] == cnt: answer[0] = min(answer[0], now)
             continue
         elif visited[now] <= cnt: continue
         elif cnt > answer[1]: continue
-        # elif cnt == answer[1] and now >= answer[0]: continue #and not gate[now]
         visited[now] = cnt
         for i, c in graph[now]:
-            if visited[i] > max(cnt, c): q.append([i, max(cnt, c)])
+            q.append([i, max(cnt, c)])
     return answer
