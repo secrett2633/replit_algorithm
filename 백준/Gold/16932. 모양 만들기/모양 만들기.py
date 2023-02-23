@@ -10,7 +10,7 @@ res = 0
 un = 1
 for i in range(n):
     for j in range(m):
-        if arr[i][j]:
+        if arr[i][j] and not visited[i][j]:
             un += 1
             q = deque([[i, j]])
             tmp = []
