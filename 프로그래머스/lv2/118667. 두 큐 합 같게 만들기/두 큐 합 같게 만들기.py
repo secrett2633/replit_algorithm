@@ -5,7 +5,7 @@ def solution(queue1, queue2):
     start = 0
     end = len(queue1)
     q = queue1 + queue2
-    while start < end and answer < len(q) * 2 and end < len(q):
+    while start < end < len(q):
         if a == b: return answer
         elif a > b:
             a -= q[start]
