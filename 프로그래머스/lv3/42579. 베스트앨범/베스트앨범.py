@@ -1,7 +1,7 @@
 def solution(genres, plays):
     answer = []
-    cache = list(set(genres))    
-    cache = {cache[i]:i for i in range(len(cache))}
+    # cache = list(set(genres))    
+    cache = {value:i for i, value in enumerate(set(genres))}
     visited = [[0] for _ in range(len(cache))]
     for i in range(len(plays)):
         visited[cache[genres[i]]][0] += plays[i]
