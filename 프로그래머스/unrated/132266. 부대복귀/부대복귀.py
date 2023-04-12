@@ -13,5 +13,4 @@ def solution(n, roads, sources, destination):
         visited[now] = cnt
         for k in graph[now]:
             q.append([cnt + 1, k])
-    visited[destination] = 0
     return [visited[i] for i in sources]
