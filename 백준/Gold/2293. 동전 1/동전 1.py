@@ -1,15 +1,10 @@
 import sys
-from collections import deque
-import copy
-from queue import PriorityQueue
 input = sys.stdin.readline
-n, m = map(int, input().split())
-arr = list(set([int(input()) for _ in range(n)]))
-dp = [0] * (100001)
-for i in arr:
-  dp[i] += 1
-  for j in range(m):
-    if j + i > m: break
-    dp[j + i] += dp[j]
-if dp[m] == int(1e9): dp[m] = -1
-print(dp[m])
+n, k = map(int, input().split())
+dp = [0] * (k + 1)
+for _ in range(n):
+  v = int(input())
+  if v <= k: dp[v] += 1
+  for i in range(v, k + 1):
+    dp[i] += dp[i - v]
+print(dp[-1])
