@@ -1,28 +1,16 @@
 import sys
-from queue import PriorityQueue
- 
-n, k = map(int, sys.stdin.readline().split())
- 
-jew = []
-bag = []
-for i in range(n):
-    jew.append(list(map(int, sys.stdin.readline().split())))
-for i in range(k):
-    bag.append(int(sys.stdin.readline()))
-jew.sort(key = lambda item: item[1], reverse = True) 
-for i in range(n):
-    jew[i].insert(0, i) 
- 
-jew.sort(key = lambda item: item[1])  
-bag.sort() 
-q = PriorityQueue()
- 
-idx = 0
-sum = 0
-for i in range(k):  
-    while (idx < n and bag[i] >= jew[idx][1]):  
-        q.put((jew[idx][0], jew[idx][2])) 
-        idx += 1
-    if not q.empty():
-       sum += q.get()[1]
-print(sum)
+input = sys.stdin.readline
+n, k = map(int, input().split())
+a = [list(map(int, input().split())) for _ in range(n)]
+b = [[int(input()), int(1e10)] for _ in range(k)]
+arr = sorted(a + b)
+import heapq
+q = []
+res = 0
+for m, v in arr:
+    if v == int(1e10):
+        if q:
+            res -= heapq.heappop(q)
+    else:
+        heapq.heappush(q, -v)
+print(res)
