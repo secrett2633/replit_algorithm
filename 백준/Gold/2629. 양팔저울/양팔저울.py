@@ -8,9 +8,8 @@ for v in list(map(int, input().split())):
             dp[i] = 1
     dp[v] = 1
 m = int(input())
-arr = list(map(int, input().split()))
 res = []
-for i in arr:
+for i in list(map(int, input().split())):
     if dp[i]: res.append('Y'); continue
     for j in range(1, 40001 - i):
         if dp[i + j] and dp[j]:
