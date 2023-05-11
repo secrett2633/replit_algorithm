@@ -1,20 +1,17 @@
 import sys
-sys.setrecursionlimit(100000)
+input = sys.stdin.readline
 n, m = map(int, input().split())
-parents = list(range(n + 1))
-
-def find_parent(x):
-  if x != parents[x]:
-    parents[x] = find_parent(parents[x])
-  return parents[x]
-
-for i in range(m):
-  a, b, c = map(int, input().split())
-  if a == 0:
-    if find_parent(b) > find_parent(c):
-      parents[find_parent(b)] = parents[c]
+arr = [i for i in range(n + 1)]
+def find(x):
+    while x != arr[x]:
+        x, arr[x] = arr[x], arr[arr[x]]
+    return x
+for _ in range(m):
+    f, a, b = map(int, input().split())
+    A, B = find(a), find(b)
+    if f == 0:        
+        if A > B: arr[B] = A
+        else: arr[A] = B
     else:
-      parents[find_parent(c)] = parents[b]
-  else:
-    if find_parent(b) == find_parent(c): print("YES")
-    else: print("NO")
+        if A == B: print('YES')
+        else: print('NO')
